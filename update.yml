@@ -1,0 +1,13 @@
+- name: Update apt packages
+  hosts: web
+  user: deploy
+  tasks:
+
+    - name: update packages
+      apt: update_cache=yes
+      sudo: yes
+
+    - name: restart web service
+      command: supervisorctl restart podbaby
+      sudo: yes
+
