@@ -1,5 +1,7 @@
 - name: Deploy updated version of site
   hosts: web
+  become: no
+  become_method: sudo
   user: deploy
   vars: 
     go_path: /home/deploy/go
@@ -14,7 +16,7 @@
           dest: "{{ app_dir }}/.env"
 
     - name: update repo
-      command: "git pull https://{{ repo }} chdir={{app_dir}}"
+      git: repo="https://{{ repo }}" dest="{{app_dir}}"
 
     - name: rebuild go app
       command: "go get -u {{ repo }}"
@@ -28,5 +30,5 @@
 
     - name: restart web service
       command: supervisorctl restart podbaby
-      sudo: yes
+      become: yes
 
