@@ -1,0 +1,5 @@
+user: deploy
+go_path: /home/deploy/go
+app_dir: /home/deploy/go/src/github.com/danjac/podbaby
+repo: github.com/danjac/podbaby
+

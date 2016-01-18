@@ -1,0 +1,6 @@
+- name: rebuild go app
+  command: "go get -u {{ repo }}"
+  environment:
+      GOPATH: "{{ go_path }}"
+
+

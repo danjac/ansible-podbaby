@@ -1,0 +1,5 @@
+- name: restart web service
+  become: yes
+  become_method: sudo
+  command: supervisorctl restart 
+

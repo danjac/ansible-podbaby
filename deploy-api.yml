@@ -1,0 +1,15 @@
+- name: Deploy updated version of site
+  hosts: web
+  user: deploy
+  pre_tasks:
+    - include_vars: vars/env.yml
+    - name: generate .env file 
+      copy:
+          content: "{{ env_file }}"
+          dest: "{{ app_dir }}/.env"
+  roles:
+      - repo
+      - compile
+      - migrate
+      - supervisor
+ 

@@ -1,0 +1,13 @@
+- name: Update apt packages
+  hosts: web
+  user: deploy
+  pre_tasks:
+
+    - name: update packages
+      become: yes
+      become_method: sudo
+      apt: update_cache=yes
+
+  roles:
+
+    - supervisor
