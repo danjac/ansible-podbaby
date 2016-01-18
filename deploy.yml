@@ -24,7 +24,7 @@
           GOPATH: "{{ go_path }}"
 
     - name: run database migrations
-      command: "migrate -path={{ app_dir }}/sql/migrations -url={{ db_url }} up"
+      command: "migrate -path={{ app_dir }}/migrations -url={{ db_url }} up"
       environment:
           PATH: "$PATH:{{ go_path }}/bin"
 
